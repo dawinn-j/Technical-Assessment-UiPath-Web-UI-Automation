@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="vGQMxSCbrUyKx0p_8W7XZA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="demoqa.com/automation-practice-form" DesignTimeRectangle="561, 157, 800, 642" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='modal-content' tag='DIV' /&gt;" Guid="8b7bd368-867b-44dd-80d0-55fc697c93bf" ScopeSelectorArgument="&lt;html app='chrome.exe' title='demosite' /&gt;" SearchSteps="Selector" Version="V6">
+      <imageRef attrName="InformativeScreenshot" originalValue="58368fa167294607ddcaa4d20f0a18a4.jpg" xmlns="">0xrp8m9DAlU2EOqbhp0UEkg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">CheckState</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
