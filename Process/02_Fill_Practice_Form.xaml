@@ -125,7 +125,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="_02_Fill_Practice_Form" sap:VirtualizedContainerService.HintSize="1274,3026" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_02_Fill_Practice_Form" sap:VirtualizedContainerService.HintSize="1274,3532" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strUrlPracticeForm" />
       <Variable x:TypeArguments="x:String" Name="strRegExFormatEmail" />
@@ -134,6 +134,7 @@
       <Variable x:TypeArguments="x:String" Name="strSubmittedAt" />
       <Variable x:TypeArguments="x:String" Name="strMessage" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtOutputReport" />
+      <Variable x:TypeArguments="x:String" Name="strScreenshotsFolder" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -141,15 +142,15 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,175" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;02_Fill_Practice_Form : START&quot;]" />
-    <Sequence DisplayName="Prepare initial setting" sap:VirtualizedContainerService.HintSize="586,386" sap2010:WorkflowViewState.IdRef="Sequence_34">
+    <Sequence DisplayName="Prepare initial setting" sap:VirtualizedContainerService.HintSize="586,417" sap2010:WorkflowViewState.IdRef="Sequence_34">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:BuildDataTable DataTable="[dtOutputReport]" DisplayName="Build Data Table output result" sap:VirtualizedContainerService.HintSize="478,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Message&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;SubmittedAt&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-      <ui:MultipleAssign DisplayName="Multiple Assign Initial value" sap:VirtualizedContainerService.HintSize="478,202" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:BuildDataTable DataTable="[dtOutputReport]" DisplayName="Build Data Table output result" sap:VirtualizedContainerService.HintSize="478,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Message&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SubmittedAt&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <ui:MultipleAssign DisplayName="Multiple Assign Initial value" sap:VirtualizedContainerService.HintSize="478,233" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -176,29 +177,37 @@
                 <InArgument x:TypeArguments="x:String">[in_Config("check_digits_mobile").ToString.Trim]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[strScreenshotsFolder]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("screenshots_folder").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
     </Sequence>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Always]" DisplayName="Chrome Practice Form" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="586,2219" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" ScopeGuid="1d08494e-97e2-44b3-9c58-f7a471dcc72f" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Always]" DisplayName="Chrome Practice Form" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="586,2694" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" ScopeGuid="1d08494e-97e2-44b3-9c58-f7a471dcc72f" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="584,2016" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="584,2491" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtInputData]" DisplayName="For Each Row in Data Table (input data)" sap:VirtualizedContainerService.HintSize="550,1956" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtInputData]" DisplayName="For Each Row in Data Table (input data)" sap:VirtualizedContainerService.HintSize="550,2431" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,1783" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,2258" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="strAddress" />
                       <Variable x:TypeArguments="x:String" Name="strHobbies" />
@@ -305,14 +314,15 @@
                     </ui:MultipleAssign>
                     <ui:IsMatch DisplayName="Is Text Matching Format email" sap:VirtualizedContainerService.HintSize="514,92" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[strEmail]" IsBuilderTabModified="False" Pattern="[strRegExFormatEmail]" RegexOption="IgnoreCase, Compiled" Result="[booCheckEmail]" />
                     <ui:IsMatch DisplayName="Is Text Matching mobile 10 digits" sap:VirtualizedContainerService.HintSize="514,92" sap2010:WorkflowViewState.IdRef="IsMatch_2" Input="[strMobile]" IsBuilderTabModified="False" Pattern="[strRegExDigitsMobile]" RegexOption="IgnoreCase, Compiled" Result="[booCheckMobile]" />
-                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="514,1111" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="514,1586" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                       <TryCatch.Try>
-                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,108" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="512,231" sap2010:WorkflowViewState.IdRef="Sequence_38">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
+                          <Throw Exception="[new Exception(&quot;test&quot;)]" sap:VirtualizedContainerService.HintSize="478,123" sap2010:WorkflowViewState.IdRef="Throw_1" />
                           <Sequence DisplayName="Processing fill in data" sap:VirtualizedContainerService.HintSize="478,48" sap2010:WorkflowViewState.IdRef="Sequence_41">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -732,7 +742,10 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Catch {ExceptionType}" sap:VirtualizedContainerService.HintSize="512,781" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                            <Sequence DisplayName="Catch {ExceptionType}" sap:VirtualizedContainerService.HintSize="512,1133" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="strScreenshortFile" />
+                              </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -771,6 +784,13 @@
                               </ui:MultipleAssign>
                               <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{strStatus, strMessage, strSubmittedAt}]" DataTable="[dtOutputReport]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="478,221" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
                               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;status : &quot; + strStatus + vbCrLf + &quot;message : &quot; + strMessage + vbCrLf + &quot;timestamp : &quot; + strSubmittedAt]" />
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="TakeScreenshot - Invoke Workflow File (Framework\TakeScreenshot.xaml)" sap:VirtualizedContainerService.HintSize="478,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[strScreenshotsFolder]</InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[strScreenshortFile]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478,175" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;screenshots error : &quot; + strScreenshortFile]" />
                               <uix:NGoToUrl DisplayName="Go To URL Practice Form" sap:VirtualizedContainerService.HintSize="478,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" ScopeIdentifier="1d08494e-97e2-44b3-9c58-f7a471dcc72f" Url="[strUrlPracticeForm]" Version="V5" />
                             </Sequence>
                           </ActivityAction>

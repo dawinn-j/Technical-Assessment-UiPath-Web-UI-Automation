@@ -1,39 +1,88 @@
-### Documentation is included in the Documentation folder ###
+# Technical Assessment: UiPath Web UI Automation
 
+UiPath Web UI Automation for Technical Assessment on [DemoQA] (https://demoqa.com/automation-practice-form) — includes test data generation, form validation, and result logging.
 
-### REFrameWork Template ###
-**Robotic Enterprise Framework**
+---
 
-* Built on top of *Transactional Business Process* template
-* Uses *State Machine* layout for the phases of automation project
-* Offers high level logging, exception handling and recovery
-* Keeps external settings in *Config.xlsx* file and Orchestrator assets
-* Pulls credentials from Orchestrator assets and *Windows Credential Manager*
-* Gets transaction data from Orchestrator queue and updates back status
-* Takes screenshots in case of system exceptions
+## Prerequisites
 
+| Requirement | Version |
+|---|---|
+| UiPath Studio | 2026.0.194 STS |
+| UiPath.UIAutomation.Activities | ≥ 24.10 |
+| UiPath.System.Activities | ≥ 24.10 |
+| UiPath.Excel.Activities | ≥ 2.22 |
+| Google Chrome | Latest |
+| UiPath Chrome Extension | Enabled |
 
-### How It Works ###
+> Install the Chrome extension via **UiPath Studio → Tools → UiPath Extensions → Chrome**
 
-1. **INITIALIZE PROCESS**
- + ./Framework/*InitiAllSettings* - Load configuration data from Config.xlsx file and from assets
- + ./Framework/*GetAppCredential* - Retrieve credentials from Orchestrator assets or local Windows Credential Manager
- + ./Framework/*InitiAllApplications* - Open and login to applications used throughout the process
+---
 
-2. **GET TRANSACTION DATA**
- + ./Framework/*GetTransactionData* - Fetches transactions from an Orchestrator queue defined by Config("OrchestratorQueueName") or any other configured data source
+## How to Run
 
-3. **PROCESS TRANSACTION**
- + *Process* - Process trasaction and invoke other workflows related to the process being automated 
- + ./Framework/*SetTransactionStatus* - Updates the status of the processed transaction (Orchestrator transactions by default): Success, Business Rule Exception or System Exception
+1. Clone the repo and open the folder in UiPath Studio
+2. Place test data in `Data/Input/Input_Mockup_Data.xlsx`
+3. Open `Main.xaml` and press **Run File**
+4. Results will be saved to `Data/Output/Output_Report.xlsx`
 
-4. **END PROCESS**
- + ./Framework/*CloseAllApplications* - Logs out and closes applications used throughout the process
+---
 
+## Assumptions and Known Limitations
 
-### For New Project ###
+**Assumptions**
+- Internet connection is available and DemoQA is accessible
+- Test data in Excel follows the column format defined in `Input_Mockup_Data.xlsx`
+- Chrome browser is installed and the UiPath extension is enabled
 
-1. Check the Config.xlsx file and add/customize any required fields and values
-2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
-3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
-4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
+**Known Limitations**
+- Only runs on Windows (UiPath Studio limitation)
+
+---
+
+## Design Notes
+
+### Selector Strategy
+
+The automation is split into two sub-tasks:
+
+- **01_Get_Input_File** — Reads the Excel input file from Sheet1 into a DataTable for processing
+- **02_Fill_Practice_Form** — Iterates through each row in the DataTable, validates the data against the following rules, then fills the DemoQA form and logs the result:
+  - Email must match a valid format
+  - Mobile number must contain 10 digits only
+  - First Name and Last Name must not be empty
+
+Only rows passing all validations are submitted to the form. Each result is recorded to the output file.
+
+### Error Handling Approach
+
+- Each row is wrapped in a Try/Catch block. If an unexpected error occurs, the error message is logged and the automation continues to the next row.
+
+---
+
+## Folder Structure
+
+```
+├── Data/
+│   └── Input/
+│   ├── Input_Mockup_Data.xlsx      # Mock input test data
+│   └── Output/
+│       └── Output_Report.xlsx      # Results after a run
+├── Exceptions_Screenshots/         # Auto-saved screenshots on failure
+├── Framework/                      # Reusable workflows
+├── Process/                        # Core process workflows
+│   ├── 01_Get_Input_File.xaml
+│   └── 02_Fill_Practice_Form.xaml
+├── Main.xaml                       # Entry point
+├── project.json
+└── README.md
+```
+
+---
+
+## Sample Data
+
+| File | Description |
+|---|---|
+| `Data/Input/Input_Mockup_Data.xlsx` | Mock data for testing |
+| `Data/Output/Output_Report.xlsx` | Expected output after running with sample input |
